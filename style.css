@@ -85,39 +85,13 @@ body, html {
 }
 
 .purple {
-    left: 70px;
-    width: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px; /* Increased width for a more central presence */
     height: 400px;
     background-color: #7B50F5; /* Adjusted purple color */
     border-radius: 10px 10px 0 0;
     z-index: 1;
-}
-
-.black {
-    left: 240px;
-    width: 120px;
-    height: 310px;
-    background-color: #2D2D2D;
-    border-radius: 8px 8px 0 0;
-    z-index: 2;
-}
-
-.orange {
-    left: 0px;
-    width: 240px;
-    height: 200px;
-    z-index: 3;
-    background-color: #FF9B6B;
-    border-radius: 120px 120px 0 0;
-}
-
-.yellow {
-    left: 310px;
-    width: 140px;
-    height: 230px;
-    background-color: #E8D754;
-    border-radius: 70px 70px 0 0;
-    z-index: 4;
 }
 
 .eyes {
@@ -128,27 +102,9 @@ body, html {
 }
 
 .purple .eyes {
-    left: 45px;
+    left: 80px; /* Adjusted for new, wider character */
     top: 40px;
-    gap: 2rem;
-}
-
-.black .eyes {
-    left: 26px;
-    top: 32px;
-    gap: 1.5rem;
-}
-
-.orange .eyes {
-    left: 82px;
-    top: 90px;
-    gap: 2rem;
-}
-
-.yellow .eyes {
-    left: 52px;
-    top: 40px;
-    gap: 1.5rem;
+    gap: 3rem; /* Increased gap for wider character */
 }
 
 .eye {
@@ -163,38 +119,12 @@ body, html {
     transition: all 0.15s;
 }
 
-.black .eye {
-    width: 16px;
-    height: 16px;
-}
-
 .pupil {
     width: 7px;
     height: 7px;
     background-color: #2D2D2D;
     border-radius: 50%;
     transition: transform 0.1s ease-out;
-}
-
-.black .pupil {
-    width: 6px;
-    height: 6px;
-}
-
-.orange .pupil, .yellow .pupil {
-    width: 12px;
-    height: 12px;
-}
-
-.mouth {
-    position: absolute;
-    width: 5rem;
-    height: 4px;
-    background-color: #2D2D2D;
-    border-radius: 9999px;
-    transition: all 0.2s ease-out;
-    left: 40px;
-    top: 88px;
 }
 
 

@@ -9,11 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginButton = document.getElementById("login-button");
 
     const purpleCharacter = document.getElementById("purple-character");
-    const blackCharacter = document.getElementById("black-character");
-    const orangeCharacter = document.getElementById("orange-character");
-    const yellowCharacter = document.getElementById("yellow-character");
 
-    const allCharacters = [purpleCharacter, blackCharacter, orangeCharacter, yellowCharacter];
+    const allCharacters = [purpleCharacter];
     const allEyes = document.querySelectorAll('.eye, .pupil');
 
     let mouseX = 0;
@@ -79,43 +76,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function setTypingAnimation(typing) {
         if (typing) {
             allCharacters.forEach(char => char.classList.add('typing'));
-            // Special adjustments for "looking at each other"
-            purpleCharacter.style.transform = `skewX(-12deg) translateX(40px)`;
-            blackCharacter.style.transform = `skewX(10deg) translateX(20px)`;
-
-            // Adjust eyes to look at each other
-            positionEyesForTyping(true);
-
+            // Special adjustments for typing
+            purpleCharacter.style.transform = `skewX(-5deg)`; // A slight lean
         } else {
             allCharacters.forEach(char => char.classList.remove('typing'));
             updateCharacterPositions(); // Return to mouse-following
-            positionEyesForTyping(false);
-        }
-    }
-
-    function positionEyesForTyping(isTyping) {
-        const purpleEyes = purpleCharacter.querySelector('.eyes');
-        const blackEyes = blackCharacter.querySelector('.eyes');
-
-        if(isTyping) {
-            purpleEyes.style.left = '55px';
-            purpleEyes.style.top = '65px';
-            blackEyes.style.left = '32px';
-            blackEyes.style.top = '12px';
-
-            // Force pupils to look at each other
-            const purplePupils = purpleCharacter.querySelectorAll('.pupil');
-            purplePupils.forEach(p => p.style.transform = `translate(3px, 4px)`);
-
-            const blackPupils = blackCharacter.querySelectorAll('.pupil');
-            blackPupils.forEach(p => p.style.transform = `translate(0px, -4px)`);
-
-        } else {
-            // Revert to original positions so mouse tracking can take over
-            purpleEyes.style.left = '45px';
-            purpleEyes.style.top = '40px';
-            blackEyes.style.left = '26px';
-            blackEyes.style.top = '32px';
         }
     }
 
@@ -173,25 +138,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const positions = {
             purple: calculatePosition(purpleCharacter),
-            black: calculatePosition(blackCharacter),
-            orange: calculatePosition(orangeCharacter),
-            yellow: calculatePosition(yellowCharacter)
         };
 
         purpleCharacter.style.transform = `skewX(${positions.purple.bodySkew}deg)`;
-        blackCharacter.style.transform = `skewX(${positions.black.bodySkew * 1.5}deg)`;
-        orangeCharacter.style.transform = `skewX(${positions.orange.bodySkew}deg)`;
-        yellowCharacter.style.transform = `skewX(${positions.yellow.bodySkew}deg)`;
 
         positionEyes(purpleCharacter, positions.purple);
-        positionEyes(blackCharacter, positions.black);
-        positionEyes(orangeCharacter, positions.orange);
-        positionEyes(yellowCharacter, positions.yellow);
     }
 
     function positionEyes(character, pos) {
         const eyes = character.querySelector('.eyes');
         if (!eyes) return;
+
+        // Reset to base position before applying new offset
+        eyes.style.left = '';
+        eyes.style.top = '';
 
         const baseLeft = parseInt(getComputedStyle(eyes).left, 10);
         const baseTop = parseInt(getComputedStyle(eyes).top, 10);
@@ -236,6 +196,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     randomBlink(purpleCharacter);
-    randomBlink(blackCharacter);
 
 });
