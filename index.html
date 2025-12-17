@@ -3,239 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login / Sign Up</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-        :root {
-            --primary-color: #4a47a3;
-            --secondary-color: #706fd3;
-            --accent-color: #ff6b81;
-            --light-grey: #f1f2f6;
-            --dark-grey: #57606f;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-grey);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            background-color: var(--white);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            padding: 40px;
-        }
-
-        .mascot {
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 2px solid var(--light-grey);
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: var(--secondary-color);
-        }
-
-        p {
-            color: var(--dark-grey);
-            font-size: 14px;
-        }
-
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .mascot svg {
-            position: relative;
-            width: 200px;
-            height: 200px;
-        }
-
-        .mascot svg g {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            pointer-events: none;
-        }
-
-        .mascot svg g.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-            }
-        }
-    </style>
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="mascot">
-            <svg>
-                <!-- Neutral State -->
-                <g id="neutral" class="active">
-                    <circle cx="100" cy="60" r="40" fill="#f0f0f0" />
-                    <circle cx="85" cy="50" r="5" fill="#333" />
-                    <circle cx="115" cy="50" r="5" fill="#333" />
-                    <path d="M 80 70 Q 100 90 120 70" stroke="#333" stroke-width="3" fill="none" />
-                    <line x1="100" y1="100" x2="100" y2="150" stroke="#333" stroke-width="3" />
-                    <line x1="100" y1="120" x2="70" y2="100" stroke="#333" stroke-width="3" />
-                    <line x1="100" y1="120" x2="130" y2="100" stroke="#333" stroke-width="3" />
-                    <line x1="100" y1="150" x2="80" y2="180" stroke="#333" stroke-width="3" />
-                    <line x1="100" y1="150" x2="120" y2="180" stroke="#333" stroke-width="3" />
-                </g>
-                <!-- Pointing State -->
-                <g id="pointing">
-                    <circle cx="100" cy="60" r="40" fill="#f0f0f0" />
-                    <circle cx="85" cy="50" r="5" fill="#333" />
-                    <circle cx="115" cy="50" r="5" fill="#333" />
-                    <path d="M 80 70 Q 100 90 120 70" stroke="#333" stroke-width="3" fill="none" />
-                    <line x1="100" y1="100" x2="100" y2="150" stroke="#333" stroke-width="3" />
-                    <line x1="100" y1="120" x2="70" y2="100" stroke="#333" stroke-width="3" />
-                    <line x1="100" y1="120" x2="130" y2="140" stroke="#333" stroke-width="3" />
-                    <line x1="100" y1="150" x2="80" y2="180" stroke="#333" stroke-width="3" />
-                    <line x1="100" y1="150" x2="120" y2="180" stroke="#333" stroke-width="3" />
-                    <text x="135" y="150" font-size="12" fill="#333">Type it here!</text>
-                </g>
-                <!-- Shy State -->
-                <g id="shy">
-                    <circle cx="100" cy="60" r="40" fill="#f0f0f0" />
-                    <path d="M 70 50 C 75 40, 95 40, 100 50" stroke="#333" stroke-width="3" fill="none" />
-                    <path d="M 100 50 C 105 40, 125 40, 130 50" stroke="#333" stroke-width="3" fill="none" />
-                    <path d="M 80 70 Q 100 80 120 70" stroke="#333" stroke-width="3" fill="none" />
-                    <line x1="100" y1="100" x2="100" y2="150" stroke="#333" stroke-width="3" />
-                    <line x1="100" y1="150" x2="80" y2="180" stroke="#333" stroke-width="3" />
-                    <line x1="100" y1="150" x2="120" y2="180" stroke="#333" stroke-width="3" />
-                    <text x="50" y="20" font-size="12" fill="#333">Don't worry, I'm not looking!</text>
-                </g>
-            </svg>
-        </div>
-        <div class="form-container">
-            <div id="login-form">
-                <h2>Login</h2>
-                <input type="email" id="login-email" placeholder="Email or Username" required>
-                <input type="password" id="login-password" placeholder="Password" required>
-                <button type="submit">Log In</button>
-                <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+        <!-- Left Content Section -->
+        <div class="left-panel">
+            <div class="relative z-20">
+                <div class="flex items-center gap-2 text-lg font-semibold">
+                    <div class="size-8 rounded-lg bg-primary-foreground/10 backdrop-blur-sm flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="M12 3a6 6 0 0 0 9 9a9 9 0 1 1-9-9Z"/></svg>
+                    </div>
+                    <span>YourBrand</span>
+                </div>
             </div>
-            <div id="signup-form" style="display: none;">
-                <h2>Sign Up</h2>
-                <input type="text" id="signup-username" placeholder="Username" required>
-                <input type="email" id="signup-email" placeholder="Email" required>
-                <input type="password" id="signup-password" placeholder="Password" required>
-                <button type="submit">Sign Up</button>
-                <p>Already have an account? <a href="#" id="show-login">Log In</a></p>
+
+            <div class="relative z-20 flex items-end justify-center h-[500px]">
+                <!-- Cartoon Characters -->
+                <div class="relative" style="width: 550px; height: 400px;">
+                    <!-- Purple tall rectangle character - Back layer -->
+                    <div id="purple-character" class="absolute bottom-0 transition-all duration-700 ease-in-out" style="left: 70px; width: 180px; height: 400px; background-color: #6C3FF5; border-radius: 10px 10px 0 0; z-index: 1;">
+                        <!-- Eyes -->
+                        <div class="absolute flex gap-8 transition-all duration-700 ease-in-out" style="left: 45px; top: 40px;">
+                            <div class="eyeball" style="width: 18px; height: 18px;"><div class="pupil" style="width: 7px; height: 7px;"></div></div>
+                            <div class="eyeball" style="width: 18px; height: 18px;"><div class="pupil" style="width: 7px; height: 7px;"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Black tall rectangle character - Middle layer -->
+                    <div id="black-character" class="absolute bottom-0 transition-all duration-700 ease-in-out" style="left: 240px; width: 120px; height: 310px; background-color: #2D2D2D; border-radius: 8px 8px 0 0; z-index: 2;">
+                        <!-- Eyes -->
+                        <div class="absolute flex gap-6 transition-all duration-700 ease-in-out" style="left: 26px; top: 32px;">
+                            <div class="eyeball" style="width: 16px; height: 16px;"><div class="pupil" style="width: 6px; height: 6px;"></div></div>
+                            <div class="eyeball" style="width: 16px; height: 16px;"><div class="pupil" style="width: 6px; height: 6px;"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Orange semi-circle character - Front left -->
+                    <div id="orange-character" class="absolute bottom-0 transition-all duration-700 ease-in-out" style="left: 0px; width: 240px; height: 200px; z-index: 3; background-color: #FF9B6B; border-radius: 120px 120px 0 0;">
+                        <!-- Eyes - just pupils, no white -->
+                        <div class="absolute flex gap-8 transition-all duration-200 ease-out" style="left: 82px; top: 90px;">
+                            <div class="pupil" style="width: 12px; height: 12px;"></div>
+                            <div class="pupil" style="width: 12px; height: 12px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Yellow tall rectangle character - Front right -->
+                    <div id="yellow-character" class="absolute bottom-0 transition-all duration-700 ease-in-out" style="left: 310px; width: 140px; height: 230px; background-color: #E8D754; border-radius: 70px 70px 0 0; z-index: 4;">
+                        <!-- Eyes - just pupils, no white -->
+                        <div class="absolute flex gap-6 transition-all duration-200 ease-out" style="left: 52px; top: 40px;">
+                            <div class="pupil" style="width: 12px; height: 12px;"></div>
+                            <div class="pupil" style="width: 12px; height: 12px;"></div>
+                        </div>
+                        <!-- Horizontal line for mouth -->
+                        <div class="absolute w-20 h-[4px] bg-[#2D2D2D] rounded-full transition-all duration-200 ease-out" style="left: 40px; top: 88px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative z-20 flex items-center gap-8 text-sm text-primary-foreground/60">
+                <a href="#" class="hover:text-primary-foreground transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-primary-foreground transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-primary-foreground transition-colors">Contact</a>
+            </div>
+
+            <!-- Decorative elements -->
+            <div class="absolute inset-0 bg-grid-white/[0.05]" style="background-size: 20px 20px;"></div>
+            <div class="absolute top-1/4 right-1/4 size-64 bg-primary-foreground/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 left-1/4 size-96 bg-primary-foreground/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Right Login Section -->
+        <div class="right-panel">
+            <div class="w-full max-w-[420px]">
+                <!-- Mobile Logo -->
+                <div class="mobile-logo flex items-center justify-center gap-2 text-lg font-semibold mb-12">
+                    <div class="size-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 text-primary"><path d="M12 3a6 6 0 0 0 9 9a9 9 0 1 1-9-9Z"/></svg>
+                    </div>
+                    <span>YourBrand</span>
+                </div>
+
+                <!-- Header -->
+                <div class="text-center mb-10">
+                    <h1 class="text-3xl font-bold tracking-tight mb-2">Welcome back!</h1>
+                    <p class="text-muted-foreground text-sm">Please enter your details</p>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="space-y-5">
+                    <div class="space-y-2">
+                        <label for="email" class="text-sm font-medium">Email</label>
+                        <input id="email" type="email" placeholder="erik@gmail.com" value="erik@gmail.com" autocomplete="off" required class="h-12 border-border/60 focus:border-primary">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="password" class="text-sm font-medium">Password</label>
+                        <div class="relative">
+                            <input id="password" type="password" placeholder="••••••••" value="1234" required class="h-12 pr-10 border-border/60 focus:border-primary">
+                            <button type="button" id="toggle-password" class="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <input type="checkbox" id="remember" />
+                            <label for="remember" class="text-sm font-normal cursor-pointer">Remember for 30 days</label>
+                        </div>
+                        <a href="#" class="text-sm text-primary hover:underline font-medium">Forgot password?</a>
+                    </div>
+
+                    <div id="error-message" class="p-3 text-sm text-red-400 bg-red-950/20 border border-red-900/30 rounded-lg hidden"></div>
+
+                    <button type="submit" id="login-button" class="w-full h-12 text-base font-medium">Log in</button>
+                </form>
+
+                <!-- Social Login -->
+                <div class="mt-6">
+                    <button class="w-full h-12 border-border/60 hover:bg-accent" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 size-5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        Log in with Google
+                    </button>
+                </div>
+
+                <!-- Sign Up Link -->
+                <div class="text-center text-sm text-muted-foreground mt-8">
+                    Don't have an account? <a href="#" class="text-foreground font-medium hover:underline">Sign Up</a>
+                </div>
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const showSignup = document.getElementById('show-signup');
-            const showLogin = document.getElementById('show-login');
-            const loginForm = document.getElementById('login-form');
-            const signupForm = document.getElementById('signup-form');
-
-            const loginEmail = document.getElementById('login-email');
-            const loginPassword = document.getElementById('login-password');
-            const signupUsername = document.getElementById('signup-username');
-            const signupEmail = document.getElementById('signup-email');
-            const signupPassword = document.getElementById('signup-password');
-
-            const neutralMascot = document.getElementById('neutral');
-            const pointingMascot = document.getElementById('pointing');
-            const shyMascot = document.getElementById('shy');
-
-            showSignup.addEventListener('click', (e) => {
-                e.preventDefault();
-                loginForm.style.display = 'none';
-                signupForm.style.display = 'block';
-            });
-
-            showLogin.addEventListener('click', (e) => {
-                e.preventDefault();
-                signupForm.style.display = 'none';
-                loginForm.style.display = 'block';
-            });
-
-            const setMascotState = (state) => {
-                neutralMascot.classList.remove('active');
-                pointingMascot.classList.remove('active');
-                shyMascot.classList.remove('active');
-
-                if (state === 'pointing') {
-                    pointingMascot.classList.add('active');
-                } else if (state === 'shy') {
-                    shyMascot.classList.add('active');
-                } else {
-                    neutralMascot.classList.add('active');
-                }
-            };
-
-            const inputs = [loginEmail, loginPassword, signupUsername, signupEmail, signupPassword];
-            inputs.forEach(input => {
-                input.addEventListener('focus', () => {
-                    if (input.type === 'password') {
-                        setMascotState('shy');
-                    } else {
-                        setMascotState('pointing');
-                    }
-                });
-
-                input.addEventListener('blur', () => {
-                    setMascotState('neutral');
-                });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
